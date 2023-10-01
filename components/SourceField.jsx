@@ -3,7 +3,7 @@ import { Form, Col } from 'react-bootstrap';
 
 const SourceField = ({ type, xxl, label, onChange, value }) => {
     return (
-        <Form.Group as={Col} md="12" xxl={xxl}>
+        <Form.Group as={Col} md="12" xxl={xxl} className="mt-3">
             <Form.Label>{ label }*</Form.Label>
             <Form.Control 
                 required 
