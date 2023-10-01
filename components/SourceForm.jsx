@@ -32,8 +32,8 @@ const SourceForm = _ => {
                     type="number"
                     label="Interval Request Limit"
                     xxl="3"
-                    value={ sourceState.intervalGap }
-                    onChange={ setter('intervalGap') }
+                    value={ sourceState.intervalRequestLimit }
+                    onChange={ setter('intervalRequestLimit') }
                 />
                 
             </Row>
