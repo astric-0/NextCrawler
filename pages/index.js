@@ -1,12 +1,15 @@
-import { useContext } from "react";
-import AppContext from "@/context/AppContext";
-import { InputBox } from "@/components";
+import { Row, Col } from "react-bootstrap";
+import { SourceForm, Bozos } from "@/components";
 
 export default function Home() {
     return (
         <>
-        
-            <InputBox />
+            <Row className="justify-content-around">
+                <Col xs md="4">
+                    <SourceForm />
+                    <Bozos />
+                </Col>
+            </Row>
         </>
     );
 }

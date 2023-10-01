@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Form, Row, Col } from "react-bootstrap";
 import config from "@/config";
 
-import SourceField from "./SourceField";
+import { SourceField } from "@/components";
 
 const SourceForm = _ => {
     const [sourceState, setSourceState] = useState({ ...config });
