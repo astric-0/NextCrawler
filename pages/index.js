@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import AppContext from "@/context/AppContext";
-import Bozos from "@/components/Bozos";
+import { Bozos, SourceForm } from "@/components";
 
 export default function Home() {
     const { crawler } = useContext(AppContext);       
@@ -8,6 +8,7 @@ export default function Home() {
 
     return (
         <>
+            <SourceForm />
             <Bozos startCb={crawler.start} stopCb={crawler.stop} />            
         </>
     );
