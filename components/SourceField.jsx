@@ -1,9 +1,9 @@
 import React from 'react';
 import { Form, Col } from 'react-bootstrap';
 
-const SourceField = ({ type, md, label, onChange, value }) => {
+const SourceField = ({ type, xxl, label, onChange, value }) => {
     return (
-        <Form.Group as={Col} md={md}>
+        <Form.Group as={Col} md="12" xxl={xxl}>
             <Form.Label>{ label }*</Form.Label>
             <Form.Control 
                 required 
@@ -18,7 +18,7 @@ const SourceField = ({ type, md, label, onChange, value }) => {
 SourceField.defaultProps = {
     type: "text",
     label: "label",
-    md: 4,
+    xxl: 12,
     onChange: _ => {},
     defaultValue: ""
 }

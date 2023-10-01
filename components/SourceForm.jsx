@@ -14,8 +14,8 @@ const SourceForm = _ => {
         <Form> 
             <Row className="justify-content-between">
                 <SourceField 
-                    label="Url" 
-                    md="4" 
+                    label="Url"                     
+                    xxl="4" 
                     value={ sourceState.defaultUrl } 
                     onChange={ setter('defaultUrl') } 
                 />
@@ -23,7 +23,7 @@ const SourceForm = _ => {
                 <SourceField
                     type="number"
                     label="Interval Gap"
-                    md="3"
+                    xxl="3"
                     value={ sourceState.intervalGap }
                     onChange={ setter('intervalGap') }
                 />
@@ -31,7 +31,7 @@ const SourceForm = _ => {
                 <SourceField
                     type="number"
                     label="Interval Request Limit"
-                    md="3"
+                    xxl="3"
                     value={ sourceState.intervalGap }
                     onChange={ setter('intervalGap') }
                 />
@@ -42,7 +42,7 @@ const SourceForm = _ => {
                 <SourceField
                     type="number"
                     label="Max Host Limit"
-                    md="3"
+                    xxl="3"
                     value={ sourceState.maxHostLimit }
                     onChange={ setter('maxHostLimit') }
                 />
@@ -50,14 +50,14 @@ const SourceForm = _ => {
                 <SourceField
                     type="number"
                     label="Link Limit"
-                    md="3"
+                    xxl="3"
                     value={ sourceState.linkLimit }
                     onChange={ setter('linkLimit') }
                 />
 
                 <SourceField 
                     label="Target Directory"
-                    md="3"
+                    xxl="3"
                     value={ sourceState.targetDir }
                     onChange={ setter('targetDir') }
                 />
