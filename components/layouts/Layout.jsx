@@ -3,7 +3,7 @@ import { Container } from 'react-bootstrap';
 
 const Layout = ({ children }) => {
     return (
-        <Container fluid className='bg-dark text-light vh-100'>
+        <Container fluid className='vh-100'>
             { children }
         </Container>
     );
