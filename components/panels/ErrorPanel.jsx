@@ -38,7 +38,7 @@ const ErrorPanel = _ => {
             <Row>
                 <Col xs="11">
                     <div className='d-flex align-items-start text-danger'>
-                        <PanelTitle title="Error List" icon={faBomb} />
+                        <PanelTitle title="Error Log" icon={faBomb} />
                         <Badge className='mx-1' bg="danger" pill>
                             {errorList.length}
                         </Badge>
