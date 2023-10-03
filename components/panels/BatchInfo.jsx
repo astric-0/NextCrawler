@@ -9,8 +9,8 @@ import { PanelTitle, ExpandBtn } from '@/components';
 const BatchInfo = _ => {
     const { batchInfo: { batch, urls } } = useContext(AppContext);
     const [expand, setExpand] = useState(false);
-    const urlsList = urls.map(url => (
-        <ListGroup.Item as='li'>
+    const urlsList = urls.map((url, index) => (
+        <ListGroup.Item as='li' key={index}>
             <Row>
                 <Col xs="1">
                     <Link href={url} legacyBehavior>

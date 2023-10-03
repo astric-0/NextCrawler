@@ -23,7 +23,7 @@ const ErrorPanel = _ => {
             >
                 <div className="ms-2 me-auto">
                     <div className="fw-bold">
-                        <span className='fw-bold'>{urlId}</span>: {message}
+                        <span className='fw-bold'>[{urlId}]</span>: {message}
                     </div>
                 </div>
                 <Badge bg="primary" pill>
@@ -48,7 +48,7 @@ const ErrorPanel = _ => {
                     <ExpandBtn expand={expand} onClick={_ => setExpand(!expand)} color='danger' />
                 </Col>
             </Row>
-            <ListGroup variant='flush' className={`shadow ${ !expand ? 'error-list' : '' }`}>
+            <ListGroup variant='flush' className={`shadow ${ !expand ? 'log' : '' }`}>
                 {errorList}
             </ListGroup>
         </Container>

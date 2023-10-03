@@ -16,8 +16,8 @@ body {
     overflow-x: hidden;
 }
 
-.error-list {
-    max-height: 30vh;
+.log {
+    max-height: 80vh;
     overflow-y: auto;
     overflow-x: hidden;
 }

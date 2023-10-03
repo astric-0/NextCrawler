@@ -1,5 +1,5 @@
-import React, { useContext } from 'react';
-import { Container, ListGroup, Badge, Row, Col } from 'react-bootstrap';
+import React, { useContext, useRef, useEffect, useState } from 'react';
+import { Container, ListGroup, Badge, Row, Col, } from 'react-bootstrap';
 import { faNoteSticky } from '@fortawesome/free-solid-svg-icons';
 import AppContext from '@/context/AppContext';
 import { PanelTitle, ExpandBtn } from '@/components';
@@ -33,17 +33,24 @@ const LogItem = ({ url, info }) => {
 
 const UrlLogPanel = _ => {
     const { urlLog } = useContext(AppContext);
-    const expand = false;
+    const [ expand, setExpand ] = useState(false);
+    const ref = useRef(null);
 
-    const logList = [];
-    let i = 0;
-    for (let url in urlLog) {
-        logList.push(<LogItem key={i} url={url} info={urlLog[url]} />);
-        i++;
-    }
+    let logList = [], i = 0;
+    for (let url in urlLog)
+        logList.push(<LogItem key={i++} url={url} info={urlLog[url]} />);        
+
+    useEffect(_ => {
+        if (i > 0) {
+            ref.current?.scrollIntoView({
+                behaviour: 'smooth',
+                block: 'end'
+            });
+        }
+    }, [ urlLog ]);
 
     return (
-        <Container>
+        <Container className='my-4'>
             <Row className='text-success'>
                 <Col xs="11">
                     <div className='d-flex align-items-start'>
@@ -54,11 +61,12 @@ const UrlLogPanel = _ => {
                     </div>
                 </Col>
                 <Col>
-                    <ExpandBtn onClick={_ => (!expand)} expand={expand} color='info' />
+                    <ExpandBtn onClick={_ => setExpand(!expand)} expand={expand} color='success' />
                 </Col>
             </Row>
-            <ListGroup>
+            <ListGroup variant='flush' className={`shadow ${ !expand ? 'log' : '' }`}>
                 {logList}
+                <ListGroup.Item className='p-0 m-0' ref={ref}></ListGroup.Item>
             </ListGroup>
         </Container>
     );

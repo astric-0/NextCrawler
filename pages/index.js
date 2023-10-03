@@ -28,9 +28,7 @@ export default function Home() {
                             <Col  md="12" lg="6">
                                 <BatchInfo />
                             </Col>
-                        </Row>
-                        <ErrorPanel />
-                        <UrlLogPanel />
+                        </Row>                                                
                     </Col>
                 }
             </Row>

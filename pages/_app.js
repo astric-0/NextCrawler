@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 import AppContext from "@/context/AppContext";
 import { Weaver } from "@/lib/services";
-import Layout from "@/components/layouts/Layout";
+import { Layout, PanelBar } from "@/components";
 import '@/styles/globals.css';
 
 export default function App({ Component, pageProps }) {
@@ -45,6 +45,7 @@ export default function App({ Component, pageProps }) {
     return (
         <AppContext.Provider value={value}>
             <Layout>
+                <PanelBar />
                 <Component {...pageProps} />
             </Layout>
         </AppContext.Provider>
