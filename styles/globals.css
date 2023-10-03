@@ -4,6 +4,12 @@ body {
     font-family: 'Source Code Pro';
 }
 
+.layout-container { 
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
 .batch-list {
     max-height: 37vh;
     overflow-y: auto;

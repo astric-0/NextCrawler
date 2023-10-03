@@ -1,6 +1,8 @@
 import { useContext } from "react";
 import { Row, Col } from "react-bootstrap";
-import { SourceForm, Bozos, ActiveHostsPanel, CurrentInfoPanel, ErrorPanel, BatchInfo } from "@/components";
+import { 
+    SourceForm, Bozos, ActiveHostsPanel, CurrentInfoPanel, ErrorPanel, BatchInfo, UrlLogPanel
+} from "@/components";
 import AppContext from "@/context/AppContext";
 
 export default function Home() {
@@ -28,6 +30,7 @@ export default function Home() {
                             </Col>
                         </Row>
                         <ErrorPanel />
+                        <UrlLogPanel />
                     </Col>
                 }
             </Row>

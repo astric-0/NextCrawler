@@ -13,6 +13,7 @@ export default function App({ Component, pageProps }) {
     const [currentInfo,  setCurrentInfo] = useState({});
     const [crawlerErrorList, setCrawlerErrorList] = useState([]);
     const [batchInfo, setBatchInfo] = useState({ batch: 0, urls: [] });
+    const [urlLog, setUrlLog] = useState({});
 
     const pushCrawlerErrorList = error => {
         crawlerErrorList.push(error);
@@ -24,13 +25,25 @@ export default function App({ Component, pageProps }) {
         setCurrentInfo,
         pushCrawlerErrorList,
         setBatchInfo,
+        setUrlLog,
     }
 
     if (!started)
         crawler.source(undefined, callbacks);
 
+    const value = { 
+        started, 
+        setStarted, 
+        crawler, 
+        activeHosts, 
+        currentInfo, 
+        crawlerErrorList, 
+        batchInfo,
+        urlLog,
+    }
+
     return (
-        <AppContext.Provider value={{ started, setStarted, crawler, activeHosts, currentInfo, crawlerErrorList, batchInfo }}>
+        <AppContext.Provider value={value}>
             <Layout>
                 <Component {...pageProps} />
             </Layout>
