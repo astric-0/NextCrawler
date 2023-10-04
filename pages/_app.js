@@ -8,16 +8,30 @@ import '@/styles/globals.css';
 
 export default function App({ Component, pageProps }) {
     const crawler = new Weaver();
+
     const [started, setStarted] = useState(false);
     const [activeHosts, setActiveHosts] = useState({});
-    const [currentInfo,  setCurrentInfo] = useState({});
+    const [currentInfo, setCurrentInfo] = useState({});
     const [crawlerErrorList, setCrawlerErrorList] = useState([]);
     const [batchInfo, setBatchInfo] = useState({ batch: 0, urls: [] });
     const [urlLog, setUrlLog] = useState({});
+    const [urlLogLength, setUrlLogLength] = useState(0);
 
     const pushCrawlerErrorList = error => {
         crawlerErrorList.push(error);
-        setCrawlerErrorList([ ...crawlerErrorList ]);
+        setCrawlerErrorList([...crawlerErrorList]);
+    }
+
+    const setUrlLogExplicit = value => {
+        const valueLen = Object.keys(value).length;
+        if (urlLogLength != valueLen) {
+            setUrlLog({ ...value });
+            setUrlLogLength(valueLen);
+        }
+    }
+
+    const getErrorListLength = _ => {
+        return crawlerErrorList.length
     }
 
     const callbacks = {
@@ -26,20 +40,23 @@ export default function App({ Component, pageProps }) {
         pushCrawlerErrorList,
         setBatchInfo,
         setUrlLog,
+        setUrlLogExplicit,
     }
 
     if (!started)
         crawler.source(undefined, callbacks);
 
-    const value = { 
-        started, 
-        setStarted, 
-        crawler, 
-        activeHosts, 
-        currentInfo, 
-        crawlerErrorList, 
+    const value = {
+        started,
+        setStarted,
+        crawler,
+        activeHosts,
+        currentInfo,
+        crawlerErrorList,
         batchInfo,
         urlLog,
+        urlLogLength,
+        getErrorListLength,
     }
 
     return (

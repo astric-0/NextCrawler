@@ -17,7 +17,7 @@ const LogItem = ({ url, info }) => {
                     <span className='fw-bold text-break'>[{urlId}]</span>&nbsp;{url}
                 </div>
                 <span className={`${failed == true ? 'text-danger' : 'text-success'}`}>{status}</span>
-            </div>
+            </div>  
             <Badge bg="primary" className='mx-1'>
                 Depth: {depth}
             </Badge>
