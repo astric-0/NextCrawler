@@ -4,7 +4,7 @@ import { faBomb } from '@fortawesome/free-solid-svg-icons';
 import AppContext from '@/context/AppContext';
 import { PanelTitle, ExpandBtn } from '@/components';
 
-const ErrorItem = ({ error}) => {
+const ErrorItem = ({ error }) => {
     const { message, url, urlId, batch } = error;
     return (
         <ListGroup.Item
