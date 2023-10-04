@@ -4,6 +4,27 @@ import { faBomb } from '@fortawesome/free-solid-svg-icons';
 import AppContext from '@/context/AppContext';
 import { PanelTitle, ExpandBtn } from '@/components';
 
+const ErrorItem = ({ error}) => {
+    const { message, url, urlId, batch } = error;
+    return (
+        <ListGroup.Item
+            as="li"
+            variant='danger'
+            className="d-flex justify-content-between align-items-start"
+            title={url}
+        >
+            <div className="ms-2 me-auto">
+                <div className="fw-bold">
+                    <span className='fw-bold'>[{urlId}]</span>: {message}
+                </div>
+            </div>
+            <Badge bg="primary" pill>
+                Batch: {batch}
+            </Badge>
+        </ListGroup.Item>
+    );
+};
+
 const ErrorPanel = _ => {
     const { crawlerErrorList } = useContext(AppContext);
     const [expand, setExpand] = useState(false);
@@ -12,25 +33,7 @@ const ErrorPanel = _ => {
 
     const errorList = [];
     crawlerErrorList.reduceRight((_, error, index) => {
-        const { message, url, urlId, batch } = error;
-        errorList.push(
-            <ListGroup.Item
-                key={index}
-                as="li"
-                variant='danger'
-                className="d-flex justify-content-between align-items-start"
-                title={url}
-            >
-                <div className="ms-2 me-auto">
-                    <div className="fw-bold">
-                        <span className='fw-bold'>[{urlId}]</span>: {message}
-                    </div>
-                </div>
-                <Badge bg="primary" pill>
-                    batch: {batch}
-                </Badge>
-            </ListGroup.Item>
-        );
+        errorList.push(<ErrorItem key={index} error={error} />);
     }, null);
 
     return (
@@ -48,7 +51,7 @@ const ErrorPanel = _ => {
                     <ExpandBtn expand={expand} onClick={_ => setExpand(!expand)} color='danger' />
                 </Col>
             </Row>
-            <ListGroup variant='flush' className={`shadow ${ !expand ? 'log' : '' }`}>
+            <ListGroup as='ul' className={`shadow ${!expand ? 'log' : ''}`}>
                 {errorList}
             </ListGroup>
         </Container>
