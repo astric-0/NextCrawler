@@ -23,15 +23,15 @@ const PageNumberList = ({ variant, start, end, steps, current, max }) => {
     return (
         <Container className='mb-3 fixed-bottom d-flex justify-content-center'>
             <div>
-            <span className='mx-2'>
-                <FontAwesomeIcon icon={faCaretLeft} />
-            </span>
-            <ButtonGroup className='shadow'>
-                {btnList}
-            </ButtonGroup>
-            <span className='mx-2'>
-                <FontAwesomeIcon icon={faCaretRight} />
-            </span>
+                <span className='mx-2'>
+                    <FontAwesomeIcon icon={faCaretLeft} />
+                </span>
+                <ButtonGroup className='shadow'>
+                    {btnList}
+                </ButtonGroup>
+                <span className='mx-2'>
+                    <FontAwesomeIcon icon={faCaretRight} />
+                </span>
             </div>
         </Container>
     );
