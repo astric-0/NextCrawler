@@ -61,7 +61,7 @@ const UrlLogPanel = _ => {
     return (
         <Container className='my-4'>
             <Row className='text-success'>
-                <Col xs="4">
+                <Col>
                     <div className='d-flex align-items-start'>
                         <PanelTitle title='Url Logs' icon={faNoteSticky} />
                         <Badge className='mx-1' bg="success" pill>
@@ -69,10 +69,8 @@ const UrlLogPanel = _ => {
                         </Badge>
                     </div>
                 </Col>
-                <Col xs='7'>
-                    <PageNumberList variant='success' start={0} end={length} steps={10} current={0} max={10} />
-                </Col>
-                <Col>
+               
+                <Col xs='1'>
                     <ExpandBtn onClick={_ => setExpand(!expand)} expand={expand} color='success' />
                 </Col>
             </Row>
@@ -80,6 +78,8 @@ const UrlLogPanel = _ => {
                 <ListGroup.Item className='p-0 m-0' ref={ref}></ListGroup.Item>
                 {logList}
             </ListGroup>
+            
+            <PageNumberList variant='success' start={0} end={length} steps={10} current={0} max={10} />                
         </Container>
     );
 }

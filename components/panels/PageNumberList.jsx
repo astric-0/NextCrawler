@@ -21,7 +21,8 @@ const PageNumberList = ({ variant, start, end, steps, current, max }) => {
     }
 
     return (
-        <Container className='mb-3'>
+        <Container className='mb-3 fixed-bottom d-flex justify-content-center'>
+            <div>
             <span className='mx-2'>
                 <FontAwesomeIcon icon={faCaretLeft} />
             </span>
@@ -31,6 +32,7 @@ const PageNumberList = ({ variant, start, end, steps, current, max }) => {
             <span className='mx-2'>
                 <FontAwesomeIcon icon={faCaretRight} />
             </span>
+            </div>
         </Container>
     );
 }
