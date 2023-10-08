@@ -34,17 +34,15 @@ const LogItem = ({ url, info }) => {
 const UrlLogPanel = _ => {
     const { urlLog } = useContext(AppContext);
     const [expand, setExpand] = useState(false);
+    const [urlLogKeys, setUrlLogKeys] = useState(Object.keys(urlLog) ?? []);
+    const [current, setCurrent] = useState(urlLogKeys.length - 1);    
     const ref = useRef(null);
 
-    //let logList = [], i = 0;
-    // for (let url in urlLog)
-    //     logList.push(<LogItem key={i++} url={url} info={urlLog[url]} />);
-
-    const urlLogKeys = Object.keys(urlLog);
     const { length } = urlLogKeys;
+    const start = length - 1;
     const end = length - 10;
-    let logList = [], i, url;
-    for (i = length - 1; i > 0 && i > end; i--) {
+    let logList = [], i, url;    
+    for (let i = start; i > 0 && i > end; i--) {
         url = urlLogKeys[i];
         logList.push(<LogItem key={i} url={url} info={urlLog[url]} />);
     }
@@ -56,6 +54,10 @@ const UrlLogPanel = _ => {
                 block: 'end'
             });
         }
+
+        setUrlLogKeys(Object.keys(urlLog));
+        console.log(`${length}, len: ${~~(length/10)}`);
+        setCurrent(~~(length/10));
     }, [urlLog]);
 
     return (
@@ -79,7 +81,15 @@ const UrlLogPanel = _ => {
                 {logList}
             </ListGroup>
             
-            <PageNumberList variant='success' start={0} end={length} steps={10} current={0} max={10} />                
+            <PageNumberList 
+                variant='success' 
+                start={0} 
+                end={length} 
+                steps={10} 
+                max={10}
+                current={current} 
+                setCurrent={setCurrent} 
+            />
         </Container>
     );
 }

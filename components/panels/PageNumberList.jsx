@@ -3,25 +3,29 @@ import { Container, ButtonGroup, ToggleButton } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretLeft, faCaretRight } from '@fortawesome/free-solid-svg-icons';
 
-const PageNumberList = ({ variant, start, end, steps, current, max }) => {
-    const n = (end - start) / steps;
-    console.log(n, end, start, steps);
-    const btnList = [];
-
-    for (let i = 0; i < n && i < max; i++) {
+const PageNumberList = ({ variant, start, end, steps, current, max, setCurrent }) => {
+    const n = ~~((end - start) / steps);    
+    if (n == 0) return;
+    
+    let count = 0, btnList = [];
+    for (let i = n; i > 0 && count < max; i--) {
         btnList.push(
             <ToggleButton
                 key={i}
                 type='radio'
+                active={i==current}
                 variant={'outline-' + variant}
             >
                 {i}
             </ToggleButton>
         );
+        count++;
     }
 
     return (
         <Container className='mb-3 fixed-bottom d-flex justify-content-center'>
+            {end}<br/>
+            {current}            
             <div>
                 <span className='mx-2'>
                     <FontAwesomeIcon icon={faCaretLeft} />
@@ -42,7 +46,8 @@ PageNumberList.defaultProps = {
     start: 0,
     end: 0,
     steps: 10,
-    current: 10,
+    current: 0,
+    setCurrent: _ => {},
     max: 5,
 };
 
