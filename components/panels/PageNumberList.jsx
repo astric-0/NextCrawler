@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretLeft, faCaretRight } from '@fortawesome/free-solid-svg-icons';
 
 const PageNumberList = ({ variant, start, end, steps, current, max, setCurrent }) => {
-    const n = ~~((end - start) / steps);    
+    const n = ~~((end - start) / steps);
     if (n == 0) return;
     
     let count = 0, btnList = [];
@@ -24,8 +24,6 @@ const PageNumberList = ({ variant, start, end, steps, current, max, setCurrent }
 
     return (
         <Container className='mb-3 fixed-bottom d-flex justify-content-center'>
-            {end}<br/>
-            {current}            
             <div>
                 <span className='mx-2'>
                     <FontAwesomeIcon icon={faCaretLeft} />

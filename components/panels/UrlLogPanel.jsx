@@ -54,11 +54,11 @@ const UrlLogPanel = _ => {
                 block: 'end'
             });
         }
-
-        setUrlLogKeys(Object.keys(urlLog));
-        console.log(`${length}, len: ${~~(length/10)}`);
-        setCurrent(~~(length/10));
-    }, [urlLog]);
+        const newKeys = Object.keys(urlLog);
+        if (newKeys.length != urlLogKeys.length)
+            setUrlLogKeys(newKeys);
+        setCurrent(~~(length/10));        
+    }, [urlLog, urlLogKeys]);
 
     return (
         <Container className='my-4'>
@@ -67,7 +67,7 @@ const UrlLogPanel = _ => {
                     <div className='d-flex align-items-start'>
                         <PanelTitle title='Url Logs' icon={faNoteSticky} />
                         <Badge className='mx-1' bg="success" pill>
-                            {Object.keys(urlLog).length}
+                            {length}
                         </Badge>
                     </div>
                 </Col>
