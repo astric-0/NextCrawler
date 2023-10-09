@@ -4,7 +4,7 @@ import { faNoteSticky } from '@fortawesome/free-solid-svg-icons';
 import AppContext from '@/context/AppContext';
 import { PanelTitle, ExpandBtn, PageNumberList } from '@/components';
 
-const LogItem = ({ url, info }) => {
+const LogItem = ({ index, url, info }) => {
     const { depth, batch, urlId, status, time, failed } = info;
     return (
         <ListGroup.Item
@@ -14,7 +14,8 @@ const LogItem = ({ url, info }) => {
         >
             <div className="ms-2 me-auto">
                 <div>
-                    <span className='fw-bold text-break'>[{urlId}]</span>&nbsp;{url}
+                    <span className='text-dark'>[{index}]</span>&nbsp;
+                    <span className='fw-bold'>[{urlId}]</span>&nbsp;{url}
                 </div>
                 <span className={`${failed == true ? 'text-danger' : 'text-success'}`}>{status}</span>
             </div>  
@@ -35,17 +36,21 @@ const UrlLogPanel = _ => {
     const { urlLog } = useContext(AppContext);
     const [expand, setExpand] = useState(false);
     const [urlLogKeys, setUrlLogKeys] = useState(Object.keys(urlLog) ?? []);
-    const [current, setCurrent] = useState(urlLogKeys.length - 1);    
+    const [current, setCurrent] = useState(~~(urlLogKeys.length - 1 / 10));    
     const ref = useRef(null);
-
     const { length } = urlLogKeys;
+
     const start = length - 1;
     const end = length - 10;
-    let logList = [], i, url;    
+    let logList = [], i, url;
     for (let i = start; i > 0 && i > end; i--) {
         url = urlLogKeys[i];
-        logList.push(<LogItem key={i} url={url} info={urlLog[url]} />);
+        logList.push(<LogItem key={i} index={i} url={url} info={urlLog[url]} />);
     }
+
+    useEffect(_ => {
+        setCurrent(~~(length/10));        
+    }, [urlLogKeys]);
 
     useEffect(_ => {
         if (i > 0) {
@@ -57,8 +62,7 @@ const UrlLogPanel = _ => {
         const newKeys = Object.keys(urlLog);
         if (newKeys.length != urlLogKeys.length)
             setUrlLogKeys(newKeys);
-        setCurrent(~~(length/10));        
-    }, [urlLog, urlLogKeys]);
+    }, [urlLog]);
 
     return (
         <Container className='my-4'>
