@@ -6,6 +6,8 @@ import { Weaver } from "@/lib/services";
 import { Layout, PanelBar } from "@/components";
 import '@/styles/globals.css';
 
+import { Modular, ZHtml } from '@/lib/downloaders';
+
 export default function App({ Component, pageProps }) {
     const crawler = new Weaver();
 
@@ -43,8 +45,15 @@ export default function App({ Component, pageProps }) {
         setUrlLogExplicit,
     }
 
-    if (!started)
-        crawler.source(undefined, callbacks);
+    //const [getZip, add, addFolder] = new Modular(_ => new zHtml());
+    const module = new ZHtml();
+
+    if (!started) {
+        //module.make();
+        crawler.source(undefined, callbacks, (value, content) => {
+            module.addFile(value, content)
+        });
+    }
 
     const value = {
         started,
@@ -57,6 +66,7 @@ export default function App({ Component, pageProps }) {
         urlLog,
         urlLogLength,
         getErrorListLength,
+        //getZip,
     }
 
     return (
