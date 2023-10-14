@@ -9,7 +9,7 @@ const config = {
     intervalRequestLimit: 6,
     maxHostLimit: 6,
     linkLimit: 20000,
-    targetDir: `./downloads/${ getDateString() }`,
+    targetDir: getDateString(),
     targetDomain: false
 }
 
