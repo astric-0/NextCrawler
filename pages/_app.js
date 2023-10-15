@@ -6,7 +6,7 @@ import { Weaver } from "@/lib/services";
 import { Layout, PanelBar } from "@/components";
 import '@/styles/globals.css';
 
-import { Modular, htmlSaver, ZHtml } from '@/lib/downloaders';
+import { htmlSaver, imgSaver } from '@/lib/downloaders';
 
 export default function App({ Component, pageProps }) {
     const crawler = new Weaver();
@@ -33,7 +33,7 @@ export default function App({ Component, pageProps }) {
     }
 
     const getErrorListLength = _ => {
-        return crawlerErrorList.length
+        return crawlerErrorList.length;
     }
 
     const callbacks = {
@@ -45,12 +45,8 @@ export default function App({ Component, pageProps }) {
         setUrlLogExplicit,
     }
 
-    //const [getZip, add, addFolder] = new Modular(_ => new zHtml());
-    //const module = new ZHtml();
-
-    if (!started) {
-        //module.make();
-        crawler.source(undefined, callbacks, htmlSaver);
+    if (!started) {        
+        crawler.source(undefined, callbacks, imgSaver);
     }
 
     const value = {
@@ -63,8 +59,7 @@ export default function App({ Component, pageProps }) {
         batchInfo,
         urlLog,
         urlLogLength,
-        getErrorListLength,
-        //getZip,
+        getErrorListLength,        
     }
 
     return (
