@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { Row, Col } from "react-bootstrap";
 import { 
-    SourceForm, Bozos, ActiveHostsPanel, CurrentInfoPanel, ErrorPanel, BatchInfo, UrlLogPanel
+    SourceForm, Bozos, ActiveHostsPanel, CurrentInfoPanel, BatchInfo
 } from "@/components";
 import AppContext from "@/context/AppContext";
 

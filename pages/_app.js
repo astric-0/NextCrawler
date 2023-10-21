@@ -6,7 +6,7 @@ import { Weaver } from "@/lib/services";
 import { Layout, PanelBar } from "@/components";
 import '@/styles/globals.css';
 
-import { htmlSaver, imgSaver } from '@/lib/downloaders';
+import { htmlSaver, imgSaver } from '@/lib/contentModules';
 
 export default function App({ Component, pageProps }) {
     const crawler = new Weaver();
@@ -45,9 +45,8 @@ export default function App({ Component, pageProps }) {
         setUrlLogExplicit,
     }
 
-    if (!started) {        
-        crawler.source(undefined, callbacks, imgSaver);
-    }
+    if (!started)
+        crawler.source(undefined, callbacks, imgSaver, undefined);    
 
     const value = {
         started,
