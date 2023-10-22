@@ -6,7 +6,7 @@ import { Weaver } from "@/lib/services";
 import { Layout, PanelBar } from "@/components";
 import '@/styles/globals.css';
 
-import { htmlSaver, imgSaver, textSaver } from '@/lib/contentModules';
+import { htmlSaver, imgSaver, textSaver } from '@/lib/content-modules';
 
 export default function App({ Component, pageProps }) {
     const crawler = new Weaver();
