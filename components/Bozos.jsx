@@ -2,11 +2,14 @@ import { Button, ButtonGroup } from "react-bootstrap";
 import { useContext } from "react";
 import AppContext from "@/context/AppContext";
 
+import { htmlSaver, imgSaver, textSaver } from '@/lib/content-modules';
+
 const Bozos = _ => {
-    const { crawler, setStarted, started } = useContext(AppContext);    
+    const { crawler, setStarted, started, sourceState, callbacks } = useContext(AppContext);    
 
     const start = _ => {
         setStarted(true);
+        crawler.source(sourceState, callbacks, htmlSaver, undefined);
         crawler.weave();
     }
 

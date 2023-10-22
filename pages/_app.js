@@ -1,12 +1,11 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState } from 'react';
 
+import config from "@/config";
 import AppContext from "@/context/AppContext";
 import { Weaver } from "@/lib/services";
 import { Layout, PanelBar } from "@/components";
 import '@/styles/globals.css';
-
-import { htmlSaver, imgSaver, textSaver } from '@/lib/content-modules';
 
 export default function App({ Component, pageProps }) {
     const crawler = new Weaver();
@@ -18,6 +17,7 @@ export default function App({ Component, pageProps }) {
     const [batchInfo, setBatchInfo] = useState({ batch: 0, urls: [] });
     const [urlLog, setUrlLog] = useState({});
     const [urlLogLength, setUrlLogLength] = useState(0);
+    const [sourceState, setSourceState] = useState({ ...config });
 
     const pushCrawlerErrorList = error => {
         crawlerErrorList.push(error);
@@ -45,20 +45,20 @@ export default function App({ Component, pageProps }) {
         setUrlLogExplicit,
     }
 
-    if (!started)
-        crawler.source(undefined, callbacks, htmlSaver, undefined);    
-
     const value = {
         started,
         setStarted,
+        sourceState,
+        setSourceState,        
         crawler,
+        callbacks,
         activeHosts,
         currentInfo,
         crawlerErrorList,
         batchInfo,
         urlLog,
         urlLogLength,
-        getErrorListLength,        
+        getErrorListLength,
     }
 
     return (
