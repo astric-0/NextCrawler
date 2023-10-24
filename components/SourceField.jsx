@@ -20,7 +20,7 @@ SourceField.defaultProps = {
     label: "label",
     xs: 12,
     onChange: _ => {},
-    defaultValue: ""
+    value: ""
 }
 
 export default SourceField;
