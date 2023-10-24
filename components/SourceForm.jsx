@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { Form, Row, Col } from "react-bootstrap";
 
 import AppContext from "@/context/AppContext";
-import { SourceField } from "@/components";
+import { SourceField, SourceCMChoice } from "@/components";
 
 const SourceForm = _ => {    
     const { sourceState, setSourceState } = useContext(AppContext);
@@ -15,15 +15,17 @@ const SourceForm = _ => {
 
             <SourceField
                 label="Url"
-                xxl="4"
+                xs="12"
                 value={sourceState.defaultUrl}
                 onChange={setter('defaultUrl')}
             />
+            
+            <SourceCMChoice />
 
             <SourceField
                 type="number"
                 label="Interval Gap"
-                xxl="3"
+                xs="12"
                 value={sourceState.intervalGap}
                 onChange={setter('intervalGap')}
             />
@@ -31,7 +33,7 @@ const SourceForm = _ => {
             <SourceField
                 type="number"
                 label="Interval Request Limit"
-                xxl="3"
+                xs="12"
                 value={sourceState.intervalRequestLimit}
                 onChange={setter('intervalRequestLimit')}
             />
@@ -39,7 +41,7 @@ const SourceForm = _ => {
             <SourceField
                 type="number"
                 label="Max Host Limit"
-                xxl="3"
+                xs="12"
                 value={sourceState.maxHostLimit}
                 onChange={setter('maxHostLimit')}
             />
@@ -47,14 +49,14 @@ const SourceForm = _ => {
             <SourceField
                 type="number"
                 label="Link Limit"
-                xxl="3"
+                xs="12"
                 value={sourceState.linkLimit}
                 onChange={setter('linkLimit')}
             />
 
             <SourceField
                 label="Target Directory"
-                xxl="3"
+                xs="12"
                 value={sourceState.targetDir}
                 onChange={setter('targetDir')}
             />

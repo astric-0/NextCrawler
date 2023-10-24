@@ -6,6 +6,7 @@ import AppContext from "@/context/AppContext";
 import { Weaver } from "@/lib/services";
 import { Layout, PanelBar } from "@/components";
 import '@/styles/globals.css';
+import { getContentModulePacks } from '@/lib/content-modules';
 
 export default function App({ Component, pageProps }) {
     const crawler = new Weaver();
@@ -18,6 +19,7 @@ export default function App({ Component, pageProps }) {
     const [urlLog, setUrlLog] = useState({});
     const [urlLogLength, setUrlLogLength] = useState(0);
     const [sourceState, setSourceState] = useState({ ...config });
+    const [contentModulePack, setContentModulePack] = useState(getContentModulePacks()[0]);
 
     const pushCrawlerErrorList = error => {
         crawlerErrorList.push(error);
@@ -49,7 +51,9 @@ export default function App({ Component, pageProps }) {
         started,
         setStarted,
         sourceState,
-        setSourceState,        
+        setSourceState,
+        contentModulePack,
+        setContentModulePack,       
         crawler,
         callbacks,
         activeHosts,

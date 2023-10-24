@@ -5,6 +5,7 @@ import Layout from "./layouts/Layout";
 import Bozos from "./Bozos";
 import SourceForm from "./SourceForm";
 import SourceField from "./SourceField";
+import SourceCMChoice from "./SourceCMChoice";
 
 import ActiveHostsPanel from "./panels/ActiveHostsPanel";
 import CurrentInfoPanel from "./panels/CurrentInfoPanel";
@@ -22,6 +23,7 @@ export {
     Bozos,
     SourceForm,
     SourceField,
+    SourceCMChoice,
     InputBox,
     
     ActiveHostsPanel,

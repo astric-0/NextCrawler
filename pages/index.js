@@ -14,7 +14,7 @@ export default function Home() {
                 {
                     !started 
                     ? 
-                    <Col xs md="4">
+                    <Col xs md="6">
                         <SourceForm />
                         <Bozos />
                     </Col>
