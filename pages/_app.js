@@ -5,8 +5,8 @@ import config from "@/config";
 import AppContext from "@/context/AppContext";
 import { Weaver } from "@/lib/services";
 import { Layout, PanelBar } from "@/components";
-import '@/styles/globals.css';
 import { getContentModulePacks } from '@/lib/content-modules';
+import '@/styles/globals.css';
 
 export default function App({ Component, pageProps }) {
     const crawler = new Weaver();

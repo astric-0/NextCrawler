@@ -11,6 +11,10 @@ const Bozos = _ => {
         crawler.weave();
     }
 
+    const pause = _ => {
+        crawler.pause();
+    }
+
     const stop = _ => {
         setStarted(false);
         crawler.stop();
@@ -19,6 +23,7 @@ const Bozos = _ => {
     return (
         <ButtonGroup className="w-100 mt-4">
             { !started && <Button variant="outline-primary" onClick={ start }>Start</Button> }
+            { started && <Button variant="outline-primary" onClick={ stop }>Pase</Button> }
             { started && <Button variant="outline-primary" onClick={ stop }>Stop</Button> }
         </ButtonGroup>
     );
