@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBomb, faNoteSticky, faHome } from '@fortawesome/free-solid-svg-icons';
 import AppContext from '@/context/AppContext';
+import { StatusControl } from '@/components/';
 
 const navItems = _ => {
     const { currentInfo, urlLogLength, getErrorListLength } = useContext(AppContext);
@@ -48,8 +49,13 @@ const PanelBar = _ => {
     ));
 
     return (
-        <Nav variant='tabs' defaultActiveKey={'/'}>
-            {navList}
+        <Nav className='justify-content-between' variant='tabs' defaultActiveKey={'/'}>
+            <div className='d-flex'>
+                {navList}
+            </div>
+            <div className='d-flex'>
+                <StatusControl />
+            </div>
         </Nav>
     );
 }

@@ -15,7 +15,8 @@ const LogItem = ({ index, url, info }) => {
             <div className="ms-2 me-auto">
                 <div>
                     <span className='text-dark'>[{index}]</span>&nbsp;
-                    <span className='fw-bold'>[{urlId}]</span>&nbsp;{url}
+                    <span className='fw-bold'>[{urlId}]</span>&nbsp;
+                    <span className='text-break'>{url}</span>
                 </div>
                 <span className={`${failed == true ? 'text-danger' : 'text-success'}`}>{status}</span>
             </div>  

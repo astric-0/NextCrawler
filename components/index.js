@@ -16,6 +16,7 @@ import PageNumberList from "./panels/PageNumberList";
 import PanelTitle from "./PanelTitle";
 import BatchInfo from "./panels/BatchInfo";
 import ExpandBtn from "./ExpandBtn";
+import StatusControl from "./StatusControl";
 
 export {
     Layout, 
@@ -32,7 +33,7 @@ export {
     UrlLogPanel,
 
     PageNumberList,
-
+    StatusControl,
     PanelTitle,
     BatchInfo,
     ExpandBtn,
