@@ -55,7 +55,7 @@ const SourceForm = _ => {
             />
 
             <SourceField
-                label="Target Directory"
+                label="Prefix"
                 xs="12"
                 value={sourceState.targetDir}
                 onChange={setter('targetDir')}
