@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { faCircleDot, faCircle, faPlugCircleXmark, faSkullCrossbones } from "@fortawesome/free-solid-svg-icons";
+import { faCircleDot, faCircle, faPlugCircleXmark, faSkullCrossbones, faRotateRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import AppContext from "@/context/AppContext";
 import { weaverStates } from "@/lib/services";
@@ -24,51 +24,74 @@ const stateFaces = {
     [weaverStates.stop]: {
         icon: faSkullCrossbones,
         color: 'danger',
+    },
+
+    [weaverStates.reset]: {
+        icon: faRotateRight,
+        color: 'warning',
     }
 }
 
 const StatusControl = _ => {
 
-    const { started, crawler } = useContext(AppContext);
+    const { crawler, resetApp } = useContext(AppContext);
     const [currState, setCurrState] = useState(crawler.getState());    
 
     useEffect(_ => {
         if (currState != crawler.getState())
             setCurrState(crawler.getState());
     }, [crawler.getState()]);
-
-    const handleCurrState = state => _ => {     
-        crawler.setState(state);   
-        setCurrState(state);
-    }
-
-    const StateBtn = ({ state, noClick, title, variant }) => {
+    
+    const StateBtn = ({ state, onClick, title, variant }) => {
         const { icon, color } = stateFaces[state];
+        
+        const handleCurrState = state => _ => {     
+            crawler.setState(state);   
+            setCurrState(state);
+        }
+
         return (
-            <Button className={`rouneded-circle text-${color}`} variant={ variant ?? "outline" } onClick={ noClick ? _=>{} : handleCurrState(state)} title={title}>
+            <Button 
+                className={`rouneded-circle text-${color}`} 
+                variant={variant ?? "outline"} 
+                onClick={onClick ?? handleCurrState(state)} title={title}
+            >
                 <FontAwesomeIcon size="xl" icon={icon} />
             </Button>
         );
     }
     
+    const KillSwitch = _ => {
+        if([weaverStates.stop, weaverStates.inactive].includes(currState)) return <></>;
+        return <StateBtn state={weaverStates.stop} title='Click to Kill Crawler' />;
+    }
+
+    const ResetSwitch = _ => {
+        if (currState != weaverStates.stop) return <></>;
+        return <StateBtn state={weaverStates.reset} title='Click to Reset App' onClick={resetApp} />
+    }
+
+    const PausePlay = _ => {
+        if (currState == weaverStates.pause)
+            return <StateBtn state={weaverStates.active} title='Click to Activate Crawler' />  
+        if  (currState == weaverStates.active)
+            return <StateBtn state={weaverStates.pause} title='Click to Pause Crawler' />
+        return <></>;
+    }
+
+    const CrawlerStateIndicator = _ => {
+        return <StateBtn state={currState} onClick={(_=>{})} title={`Current State is ${currState}`} />
+    }
+
     return (
         <>
             <ButtonGroup className="rounded-pill shadow mx-2">
-                { 
-                    currState != weaverStates.stop && currState != weaverStates.inactive && 
-                    <StateBtn state={weaverStates.stop} title='Click to Kill Crawler' />
-                }
-                { 
-                    currState == weaverStates.pause 
-                    ?
-                        <StateBtn state={weaverStates.active} title='Click to Activate Crawler' />
-                    :   
-                        currState != weaverStates.stop && currState != weaverStates.inactive && 
-                        <StateBtn state={weaverStates.pause} title='Click to Pause Crawler' />
-                }
+                { ResetSwitch() }
+                { KillSwitch() }
+                { PausePlay() }
             </ButtonGroup>
             <ButtonGroup className="shadow rounded-pill">
-            <StateBtn state={currState} noClick={true} title={`Current State is ${currState}`} />
+                { CrawlerStateIndicator() }            
             </ButtonGroup>
         </>
     );

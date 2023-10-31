@@ -21,6 +21,19 @@ export default function App({ Component, pageProps }) {
     const [sourceState, setSourceState] = useState({ ...config });
     const [contentModulePack, setContentModulePack] = useState(getContentModulePacks()[0]);
 
+    const resetApp = _ => {
+        crawler.reset();
+        setStarted(false);
+        setActiveHosts({});
+        setCurrentInfo({});
+        setCrawlerErrorList({});
+        setBatchInfo({ batch: 0, urls: [] });
+        setUrlLog({});
+        setUrlLogLength(0);
+        setSourceState({ ...config });
+        setContentModulePack(getContentModulePacks()[0]);
+    }
+
     const pushCrawlerErrorList = error => {
         crawlerErrorList.push(error);
         setCrawlerErrorList([...crawlerErrorList]);
@@ -63,6 +76,7 @@ export default function App({ Component, pageProps }) {
         urlLog,
         urlLogLength,
         getErrorListLength,
+        resetApp,
     }
 
     return (
