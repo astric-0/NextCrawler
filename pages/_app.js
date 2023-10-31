@@ -26,7 +26,7 @@ export default function App({ Component, pageProps }) {
         setStarted(false);
         setActiveHosts({});
         setCurrentInfo({});
-        setCrawlerErrorList({});
+        setCrawlerErrorList([]);
         setBatchInfo({ batch: 0, urls: [] });
         setUrlLog({});
         setUrlLogLength(0);
