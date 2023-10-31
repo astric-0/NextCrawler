@@ -100,7 +100,7 @@ const UrlPanel = _ => {
                 end={crawlerBatch} 
                 current={currentBatch}
                 refresh={_ => logList}
-                setCurrent={val => { console.log(val); setCurrentBatch(val); makeLog(val); }}
+                setCurrent={val => { setLatest(false); setCurrentBatch(val); makeLog(val); }}
             >
                 <Button variant='outline-success' active={latest} onClick={toggleLatest} >Latest</Button>
             </PageNumberList>
