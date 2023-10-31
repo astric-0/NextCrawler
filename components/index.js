@@ -12,6 +12,7 @@ import CurrentInfoPanel from "./panels/CurrentInfoPanel";
 import ErrorPanel from "./panels/ErrorPanel";
 import UrlLogPanel from "./panels/UrlLogPanel";
 import PageNumberList from "./panels/PageNumberList";
+import UrlPanel from "./panels/UrlPanel";
 
 import PanelTitle from "./PanelTitle";
 import BatchInfo from "./panels/BatchInfo";
@@ -31,6 +32,7 @@ export {
     CurrentInfoPanel,
     ErrorPanel,
     UrlLogPanel,
+    UrlPanel,
 
     PageNumberList,
     StatusControl,

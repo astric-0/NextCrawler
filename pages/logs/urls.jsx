@@ -1,9 +1,9 @@
 import React from 'react';
-import { UrlLogPanel } from '@/components';
+import { UrlLogPanel, UrlPanel } from '@/components';
 
 const UrlsLog = _ => {
     return (        
-        <UrlLogPanel />
+        <UrlPanel />
     );
 }
 

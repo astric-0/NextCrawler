@@ -39,11 +39,15 @@ export default function App({ Component, pageProps }) {
         setCrawlerErrorList([...crawlerErrorList]);
     }
 
-    const setUrlLogExplicit = value => {
-        const valueLen = Object.keys(value).length;
-        if (urlLogLength != valueLen) {
-            setUrlLog({ ...value });
-            setUrlLogLength(valueLen);
+    const setUrlLogExplicit = log => {
+        const { url, batch } = log;
+        if (urlLog[batch] == undefined) {
+            urlLog[batch] = [log];
+            setUrlLog({ ...urlLog });
+        }
+        else {
+            urlLog[batch].push(log);            
+            setUrlLog(urlLog);
         }
     }
 
