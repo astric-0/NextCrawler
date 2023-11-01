@@ -31,10 +31,10 @@ const BatchInfo = _ => {
                     <div className='d-flex align-items-start'>
                         <PanelTitle title='Batch Info' icon={faLayerGroup} />
                         <Badge className='mx-1' bg="info" pill>
-                            {batch}
+                            {urls.length}
                         </Badge>
                         <Badge className='mx-1' bg="info" pill>
-                            Requests: {urls.length}
+                            Batch: {batch}
                         </Badge>
                     </div>
                 </Col>

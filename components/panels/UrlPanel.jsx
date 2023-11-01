@@ -6,7 +6,7 @@ import AppContext from '@/context/AppContext';
 import { PanelTitle, ExpandBtn, PageNumberList } from '@/components';
 
 const LogItem = ({ index, log }) => {
-    const { depth, batch, urlId, status, time, failed, url } = log;
+    const { urlId, status, time, failed, url } = log;
     return (
         <ListGroup.Item
             as="li"
@@ -21,12 +21,7 @@ const LogItem = ({ index, log }) => {
                 </div>
                 <span className={`${failed == true ? 'text-danger' : 'text-success'}`}>{status}</span>
             </div>  
-            <Badge bg="primary" className='mx-1'>
-                Depth: {depth}
-            </Badge>
-            <Badge bg="dark" className='mx-1'>
-                Batch: {batch}
-            </Badge>
+            
             <Badge bg="dark" className='mx-1'>
                 {time}
             </Badge>
@@ -86,6 +81,12 @@ const UrlPanel = _ => {
                         <Badge className='mx-1' bg="success" pill>
                             {logList.length}
                         </Badge>
+                        <Badge className='mx-1' bg="info" pill>
+                            Batch: {currentBatch ?? 'Null'}
+                        </Badge>
+                        <Badge className='mx-1' bg="primary" pill>
+                            Depth: {urlLog[currentBatch]?.[0]?.depth ?? -1 }
+                        </Badge>
                     </div>
                 </Col>
                
@@ -93,6 +94,7 @@ const UrlPanel = _ => {
                     <ExpandBtn onClick={_ => setExpand(!expand)} expand={expand} color='success' />
                 </Col>
             </Row>
+
             <ListGroup as='ul' className={`shadow ${!expand ? 'log' : ''}`}>
                 <ListGroup.Item className='p-0 m-0' ref={ref}></ListGroup.Item>
                 {logList}

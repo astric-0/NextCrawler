@@ -4,7 +4,7 @@ import { faBomb } from '@fortawesome/free-solid-svg-icons';
 import AppContext from '@/context/AppContext';
 import { PanelTitle, ExpandBtn } from '@/components';
 
-const ErrorItem = ({ error }) => {
+const ErrorItem = ({ error, index }) => {
     const { message, url, urlId, batch } = error;
     return (
         <ListGroup.Item
@@ -14,11 +14,12 @@ const ErrorItem = ({ error }) => {
             title={url}
         >
             <div className="ms-2 me-auto">
-                <div className="fw-bold">
-                    <span className='fw-bold'>[{urlId}]</span>: {message}
+                <div>
+                    <span className='me-1'>[{index}]</span>
+                    <span className='fw-bold'>[{urlId}] : {message}</span>
                 </div>
             </div>
-            <Badge bg="primary" pill>
+            <Badge bg="info" pill>
                 Batch: {batch}
             </Badge>
         </ListGroup.Item>
@@ -33,7 +34,7 @@ const ErrorPanel = _ => {
 
     const errorList = [];
     crawlerErrorList.reduceRight((_, error, index) => {
-        errorList.push(<ErrorItem key={index} error={error} />);
+        errorList.push(<ErrorItem key={index} index={index} error={error} />);
     }, null);
 
     return (
