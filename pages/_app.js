@@ -33,15 +33,15 @@ export default function App({ Component, pageProps }) {
         setSourceState({ ...config });
         setContentModulePack(getContentModulePacks()[0]);
     }
-    
+
     const pushCrawlerErrorList = error => {
         crawlerErrorList.push(error);
         setCrawlerErrorList([...crawlerErrorList]);
     }
-    
+
     const setUrlLogExplicit = log => {
         const { batch } = log;       
-        
+
         ++urlLog.total;
         if (urlLog[batch] == undefined) {
             urlLog[batch] = [log];

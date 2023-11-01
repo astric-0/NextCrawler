@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { faCircleDot, faCircle, faPlugCircleXmark, faSkullCrossbones, faRotateRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import AppContext from "@/context/AppContext";
@@ -34,20 +34,13 @@ const stateFaces = {
 
 const StatusControl = _ => {
 
-    const { crawler, resetApp } = useContext(AppContext);
-    const [currState, setCurrState] = useState(crawler.getState());    
-
-    useEffect(_ => {
-        if (currState != crawler.getState())
-            setCurrState(crawler.getState());
-    }, [crawler.getState()]);
+    const { crawler, resetApp, crawlerState } = useContext(AppContext);
     
     const StateBtn = ({ state, onClick, title, variant }) => {
         const { icon, color } = stateFaces[state];
         
         const handleCurrState = state => _ => {     
-            crawler.setState(state);   
-            setCurrState(state);
+            crawler.setState(state);            
         }
 
         return (
@@ -62,25 +55,25 @@ const StatusControl = _ => {
     }
     
     const KillSwitch = _ => {
-        if([weaverStates.stop, weaverStates.inactive].includes(currState)) return <></>;
+        if([weaverStates.stop, weaverStates.inactive].includes(crawlerState)) return <></>;
         return <StateBtn state={weaverStates.stop} title='Click to Kill Crawler' />;
     }
 
     const ResetSwitch = _ => {
-        if (currState != weaverStates.stop) return <></>;
+        if (crawlerState != weaverStates.stop) return <></>;
         return <StateBtn state={weaverStates.reset} title='Click to Reset App' onClick={resetApp} />
     }
 
     const PausePlay = _ => {
-        if (currState == weaverStates.pause)
+        if (crawlerState == weaverStates.pause)
             return <StateBtn state={weaverStates.active} title='Click to Activate Crawler' />  
-        if  (currState == weaverStates.active)
+        if  (crawlerState == weaverStates.active)
             return <StateBtn state={weaverStates.pause} title='Click to Pause Crawler' />
         return <></>;
     }
 
     const CrawlerStateIndicator = _ => (
-        <StateBtn state={currState} onClick={(_=>{})} title={`Current State is ${currState}`} />
+        <StateBtn state={crawlerState} onClick={_=>{}} title={`Current State is ${crawlerState}`} />
     );
 
     return (
