@@ -4,7 +4,7 @@ import { useState } from 'react';
 import config from "@/config";
 import AppContext from "@/context/AppContext";
 import { Weaver } from "@/lib/services";
-import { Layout, PanelBar } from "@/components";
+import { Layout, TopPanel } from "@/components";
 import { getContentModulePacks } from '@/lib/content-modules';
 import '@/styles/globals.css';
 
@@ -16,8 +16,8 @@ export default function App({ Component, pageProps }) {
     const [currentInfo, setCurrentInfo] = useState({});
     const [crawlerErrorList, setCrawlerErrorList] = useState([]);
     const [batchInfo, setBatchInfo] = useState({ batch: 0, urls: [] });
-    const [urlLog, setUrlLog] = useState({});
-    const [urlLogLength, setUrlLogLength] = useState(0);
+    const [urlLog, setUrlLog] = useState({ total: 0 });
+    const [urlLogLength, setUrlLogLength] = useState({length:0});
     const [sourceState, setSourceState] = useState({ ...config });
     const [contentModulePack, setContentModulePack] = useState(getContentModulePacks()[0]);
 
@@ -28,31 +28,37 @@ export default function App({ Component, pageProps }) {
         setCurrentInfo({});
         setCrawlerErrorList([]);
         setBatchInfo({ batch: 0, urls: [] });
-        setUrlLog({});
+        setUrlLog({ total: 0 });
         setUrlLogLength(0);
         setSourceState({ ...config });
         setContentModulePack(getContentModulePacks()[0]);
     }
-
+    
     const pushCrawlerErrorList = error => {
         crawlerErrorList.push(error);
         setCrawlerErrorList([...crawlerErrorList]);
     }
-
+    
     const setUrlLogExplicit = log => {
-        const { url, batch } = log;
+        const { batch } = log;       
+        
+        ++urlLog.total;
         if (urlLog[batch] == undefined) {
             urlLog[batch] = [log];
             setUrlLog({ ...urlLog });
         }
         else {
-            urlLog[batch].push(log);            
+            urlLog[batch].push(log);     
             setUrlLog(urlLog);
         }
     }
 
     const getErrorListLength = _ => {
         return crawlerErrorList.length;
+    }
+
+    const getTotalProccessedUrl = _ => {
+        return urlLog.total;
     }
 
     const callbacks = {
@@ -80,13 +86,14 @@ export default function App({ Component, pageProps }) {
         urlLog,
         urlLogLength,
         getErrorListLength,
+        getTotalProccessedUrl,
         resetApp,
     }
 
     return (
         <AppContext.Provider value={value}>
             <Layout>
-                <PanelBar />
+                <TopPanel />
                 <Component {...pageProps} />
             </Layout>
         </AppContext.Provider>

@@ -5,8 +5,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import AppContext from '@/context/AppContext';
 import { PanelTitle, ExpandBtn, PageNumberList } from '@/components';
 
-const LogItem = ({ index, url, info }) => {
-    const { depth, batch, urlId, status, time, failed } = info;
+const LogItem = ({ index, log }) => {
+    const { depth, batch, urlId, status, time, failed, url } = log;
     return (
         <ListGroup.Item
             as="li"
@@ -47,10 +47,7 @@ const UrlPanel = _ => {
     const makeLog = batchNo => {
         const logs = urlLog[batchNo];
         if (logs) {
-            const list = logs?.map((log, index) => {
-                const { url: key } = log;
-                return (<LogItem key={key} index={index} url={key} info={log} />);
-            });        
+            const list = logs?.map((log, index) => <LogItem key={log.url} index={index} log={log} />);        
             setLogList(list);
         }
     }

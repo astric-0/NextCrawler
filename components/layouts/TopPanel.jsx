@@ -7,7 +7,7 @@ import AppContext from '@/context/AppContext';
 import { StatusControl } from '@/components/';
 
 const navItems = _ => {
-    const { currentInfo, urlLogLength, getErrorListLength } = useContext(AppContext);
+    const { currentInfo, getTotalProccessedUrl, getErrorListLength } = useContext(AppContext);
     return [
         {
             href: '/',
@@ -21,7 +21,7 @@ const navItems = _ => {
             face: 'Url Logs',
             icon: faNoteSticky,
             variant: 'success',
-            data: urlLogLength,
+            data: getTotalProccessedUrl(),
         },
         {
             href: '/logs/errors',
@@ -33,7 +33,7 @@ const navItems = _ => {
     ]
 };
 
-const PanelBar = _ => {
+const TopPanel = _ => {
     const navList = navItems().map(({ href, face, icon, variant, data }, index) => (
         <Nav.Item key={index}>
             <Link className={`nav-link text-${variant}`} href={href}>
@@ -60,4 +60,4 @@ const PanelBar = _ => {
     );
 }
 
-export default PanelBar;
+export default TopPanel;

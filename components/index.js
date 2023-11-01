@@ -1,4 +1,4 @@
-import PanelBar from "./layouts/PanelBar";
+import TopPanel from "./layouts/TopPanel";
 import InputBox from "./layouts/InputBox";
 import Layout from "./layouts/Layout";
 
@@ -21,7 +21,7 @@ import StatusControl from "./StatusControl";
 
 export {
     Layout, 
-    PanelBar,
+    TopPanel,
     Bozos,
     SourceForm,
     SourceField,
