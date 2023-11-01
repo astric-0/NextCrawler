@@ -4,27 +4,24 @@ import { faBomb } from '@fortawesome/free-solid-svg-icons';
 import AppContext from '@/context/AppContext';
 import { PanelTitle, ExpandBtn } from '@/components';
 
-const ErrorItem = ({ error, index }) => {
-    const { message, url, urlId, batch } = error;
-    return (
-        <ListGroup.Item
-            as="li"
-            variant='danger'
-            className="d-flex justify-content-between align-items-start"
-            title={url}
-        >
-            <div className="ms-2 me-auto">
-                <div>
-                    <span className='me-1'>[{index}]</span>
-                    <span className='fw-bold'>[{urlId}] : {message}</span>
-                </div>
+const ErrorItem = ({ error: { message, url, urlId, batch }, index }) => (    
+    <ListGroup.Item
+        as="li"
+        variant='danger'
+        className="d-flex justify-content-between align-items-start"
+        title={url}
+    >
+        <div className="ms-2 me-auto">
+            <div>
+                <span className='me-1'>[{index}]</span>
+                <span className='fw-bold'>[{urlId}] : {message}</span>
             </div>
-            <Badge bg="info" pill>
-                Batch: {batch}
-            </Badge>
-        </ListGroup.Item>
-    );
-};
+        </div>
+        <Badge bg="info" pill>
+            Batch: {batch}
+        </Badge>
+    </ListGroup.Item>
+);
 
 const ErrorPanel = _ => {
     const { crawlerErrorList } = useContext(AppContext);

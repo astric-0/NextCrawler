@@ -16,23 +16,20 @@ const CurrentInfoPanel = _ => {
 
     const info = { ...currentInfo, processed: getTotalProccessedUrl() };
 
-    const infoList = keyNames.map(item => {
-        const { key, name, variant } = item;
-        return (
-            <Col key={ key } className='my-2' md="12" lg="3">
-                <Container className='rounded'>
-                    <Button className='shadow w-100' variant={ variant } size="lg">{info[key] ?? 0}</Button>
-                    <label className={ 'text-' + variant }>{ name }</label>
-                </Container>
-            </Col>
-        )
-    });
+    const infoList = keyNames.map(({ key, name, variant }) => (
+        <Col key={key} className='my-2' md="12" lg="3">
+            <Container className='rounded'>
+                <Button className='shadow w-100' variant={variant} size="lg">{info[key] ?? 0}</Button>
+                <label className={'text-' + variant}>{name}</label>
+            </Container>
+        </Col>
+    ));
 
     return (
         <Container className='my-3 text-primary'>
             <PanelTitle title="Current Info" icon={ faCircleInfo }/>       
             <Row className='mt-3'>
-                { infoList }
+                {infoList}
             </Row>
         </Container>
     );

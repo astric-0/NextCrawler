@@ -79,19 +79,19 @@ const StatusControl = _ => {
         return <></>;
     }
 
-    const CrawlerStateIndicator = _ => {
-        return <StateBtn state={currState} onClick={(_=>{})} title={`Current State is ${currState}`} />
-    }
+    const CrawlerStateIndicator = _ => (
+        <StateBtn state={currState} onClick={(_=>{})} title={`Current State is ${currState}`} />
+    );
 
     return (
         <>
-            <ButtonGroup className="rounded-pill shadow mx-2">
-                { ResetSwitch() }
-                { KillSwitch() }
-                { PausePlay() }
+            <ButtonGroup className="rounded-pill shadow mx-2">                
+                <ResetSwitch />                
+                <KillSwitch />
+                <PausePlay />
             </ButtonGroup>
             <ButtonGroup className="shadow rounded-pill">
-                { CrawlerStateIndicator() }            
+                <CrawlerStateIndicator />          
             </ButtonGroup>
         </>
     );

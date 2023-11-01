@@ -5,31 +5,28 @@ import AppContext from '@/context/AppContext';
 import { PanelTitle } from '@/components';
 
 const ActiveHostsPanel = _ => {
-    const { activeHosts } = useContext(AppContext);
-    useEffect(_ => { }, [activeHosts]);
+    const { activeHosts } = useContext(AppContext);    
 
-    const list = Object.keys(activeHosts).map(hostname => {
-        return (
-            <ListGroup.Item
-                key={hostname}
-                as='li'
-                className='d-flex justify-content-between align-items-start'
-            >
-                <div className="ms-2 me-auto fw-bold">
-                    {hostname}
-                </div>
-                <Badge bg="success">
-                    { activeHosts[hostname] }
-                </Badge>                
-            </ListGroup.Item>
-        );
-    });
+    const list = Object.keys(activeHosts).map(hostname => (
+        <ListGroup.Item
+            key={hostname}
+            as='li'
+            className='d-flex justify-content-between align-items-start'
+        >
+            <div className="ms-2 me-auto fw-bold">
+                {hostname}
+            </div>
+            <Badge bg="success">
+                {activeHosts[hostname]}
+            </Badge>                
+        </ListGroup.Item>
+    ));
 
     return (
         <Container className='my-3'>
             <PanelTitle title="Active Hosts" icon={faSitemap} />
             <ListGroup as='ol' numbered className='shadow'>
-                { list }
+                {list}
             </ListGroup>
         </Container>
     );
