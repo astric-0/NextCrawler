@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 import config from "@/config";
 import AppContext from "@/context/AppContext";
-import { Weaver } from "@/lib/services";
+import { Weaver, weaverStates } from "@/lib/services";
 import { Layout, TopPanel } from "@/components";
 import { getContentModulePacks } from '@/lib/content-modules';
 import '@/styles/globals.css';
@@ -11,7 +11,7 @@ import '@/styles/globals.css';
 export default function App({ Component, pageProps }) {
     const crawler = new Weaver();
 
-    const [started, setStarted] = useState(false);
+    const [crawlerState, setCrawlerState] = useState(crawler?.getState() ?? weaverStates.inactive);
     const [activeHosts, setActiveHosts] = useState({});
     const [currentInfo, setCurrentInfo] = useState({});
     const [crawlerErrorList, setCrawlerErrorList] = useState([]);
@@ -23,7 +23,7 @@ export default function App({ Component, pageProps }) {
 
     const resetApp = _ => {
         crawler.reset();
-        setStarted(false);
+        setCrawlerState(weaverStates.inactive);
         setActiveHosts({});
         setCurrentInfo({});
         setCrawlerErrorList([]);
@@ -67,12 +67,13 @@ export default function App({ Component, pageProps }) {
         pushCrawlerErrorList,
         setBatchInfo,
         setUrlLog,
+        setCrawlerState,
         setUrlLogExplicit,
     }
 
     const value = {
-        started,
-        setStarted,
+        crawlerState,
+        setCrawlerState,
         sourceState,
         setSourceState,
         contentModulePack,
