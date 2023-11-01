@@ -1,6 +1,7 @@
 import React, { useContext, useRef, useEffect, useState } from 'react';
 import { Container, ListGroup, Badge, Row, Col, Button, } from 'react-bootstrap';
-import { faNoteSticky } from '@fortawesome/free-solid-svg-icons';
+import { faNoteSticky, faLock, faLockOpen } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import AppContext from '@/context/AppContext';
 import { PanelTitle, ExpandBtn, PageNumberList } from '@/components';
 
@@ -35,7 +36,7 @@ const LogItem = ({ index, url, info }) => {
 
 const UrlPanel = _ => {
     const { urlLog, crawler } = useContext(AppContext);
-    const crawlerBatch = (crawler.variants?.batch ?? 1) - 1;
+    let crawlerBatch = (crawler.variants?.batch ?? 1) - 1;
 
     const [expand, setExpand] = useState(false);
     const [currentBatch, setCurrentBatch] = useState(crawlerBatch);
@@ -49,11 +50,11 @@ const UrlPanel = _ => {
             const list = logs?.map((log, index) => {
                 const { url: key } = log;
                 return (<LogItem key={key} index={index} url={key} info={log} />);
-            });
-            //setCurrentBatch(crawlerBatch);
+            });        
             setLogList(list);
         }
     }
+
     useEffect(_ => {
         makeLog(crawlerBatch);
         setCurrentBatch(crawlerBatch);
@@ -72,6 +73,11 @@ const UrlPanel = _ => {
             makeLog(crawlerBatch);
             setCurrentBatch(crawlerBatch);
         }
+        crawlerBatch = (crawler.variants?.batch ?? 1) - 1;
+    }
+
+    const checkRefresh = _ => {
+        return latest || crawlerBatch <= 10;
     }
 
     return (
@@ -99,10 +105,13 @@ const UrlPanel = _ => {
                 variant='success' 
                 end={crawlerBatch} 
                 current={currentBatch}
-                refresh={_ => logList}
+                refresh={_ => crawlerBatch}
                 setCurrent={val => { setLatest(false); setCurrentBatch(val); makeLog(val); }}
+                checkRefresh={checkRefresh}
             >
-                <Button variant='outline-success' active={latest} onClick={toggleLatest} >Latest</Button>
+                <Button variant='outline-success' active={latest} onClick={toggleLatest} >
+                    <FontAwesomeIcon icon={latest ? faLock : faLockOpen} />
+                </Button>
             </PageNumberList>
 
         </Container>

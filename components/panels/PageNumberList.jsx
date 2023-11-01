@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { Container, ButtonGroup, ToggleButton } from 'react-bootstrap';
+import { Container, ButtonGroup, ToggleButton, Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretLeft, faCaretRight } from '@fortawesome/free-solid-svg-icons';
 
-const PageNumberList = ({ variant, start, end, current, setCurrent, max, refresh, children }) => {  
+const PageNumberList = ({ variant, start, end, current, setCurrent, max, refresh, children, checkRefresh }) => {  
     const btnList = [];
     const [window, setWindow] = useState({ left: end, right: end - max })
     
     useEffect(_ => {
-        setWindow({ left: end, right: end - max })
+        if (checkRefresh())
+            setWindow({ left: end, right: end - max });
     }, [refresh()])
 
     for (let i = window.left; i > start && i > window.right; i--) {
@@ -39,19 +40,20 @@ const PageNumberList = ({ variant, start, end, current, setCurrent, max, refresh
         setWindow({ ...window });
     }
 
+    const arrowClasses = `mx-2 text-${variant}`;
     return (
-        <Container className='mb-3 fixed-bottom d-flex justify-content-center'>
-            <div>
+        <Container className='mb-3 fixed-bottom'>
+            <div className='d-flex justify-content-center'>
                 {children}
-                <span className='mx-2' onClick={shiftLeft}>
+                <Button variant='outline' className={arrowClasses} onClick={shiftLeft}>
                     <FontAwesomeIcon icon={faCaretLeft} />
-                </span>
-                <ButtonGroup className='shadow'>
+                </Button>
+                <ButtonGroup className='shadow w-50'>
                     {btnList}
                 </ButtonGroup>
-                <span className='mx-2' onClick={shiftRight}>
+                <Button variant='outline' className={arrowClasses} onClick={shiftRight}>
                     <FontAwesomeIcon icon={faCaretRight} />
-                </span>
+                </Button>
             </div>
         </Container>
     );
@@ -65,7 +67,8 @@ PageNumberList.defaultProps = {
     current: 0,
     setCurrent: _ => {},
     max: 10,
-    refresh: _ => {}
+    refresh: _ => {},
+    checkRefresh: _ => true,
 };
 
 export default PageNumberList;
