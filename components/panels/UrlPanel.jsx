@@ -108,9 +108,14 @@ const UrlPanel = _ => {
                 setCurrent={val => { setLatest(false); setCurrentBatch(val); makeLog(val); }}
                 checkRefresh={checkRefresh}
             >
-                <Button variant='outline-success' active={latest} onClick={toggleLatest} >
-                    <FontAwesomeIcon icon={latest ? faLock : faLockOpen} />
-                </Button>
+                <div className='d-flex align-items-start'>
+                    <Button variant='outline-success' active={latest} onClick={toggleLatest} title='Click to Lock/Unlock On Latest' >
+                        <FontAwesomeIcon icon={latest ? faLock : faLockOpen} />
+                    </Button>
+                    <Badge className='mx-1' bg="success" title='Latest Batch' pill>
+                        {crawlerBatch}
+                    </Badge>
+                </div>
             </PageNumberList>
 
         </Container>
