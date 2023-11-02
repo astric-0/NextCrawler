@@ -35,7 +35,7 @@ const KeywordCard = _ => {
     });
 
     return (
-        <Card className='mt-3'>
+        <Card className='mt-4 shadow'>
             <Card.Header className="d-flex justify-content-between">
                 <span className='h2'>Keywords</span>
                 <ButtonGroup variant='dark' className='mt-2'>
