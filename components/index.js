@@ -6,6 +6,7 @@ import Bozos from "./Bozos";
 import SourceForm from "./SourceForm";
 import SourceField from "./SourceField";
 import SourceCMChoice from "./SourceCMChoice";
+import UploadControl from "./UploadControl";
 
 import ActiveHostsPanel from "./panels/ActiveHostsPanel";
 import CurrentInfoPanel from "./panels/CurrentInfoPanel";
@@ -33,8 +34,9 @@ export {
     ErrorPanel,
     UrlLogPanel,
     UrlPanel,
-
+    
     PageNumberList,
+    UploadControl,
     StatusControl,
     PanelTitle,
     BatchInfo,

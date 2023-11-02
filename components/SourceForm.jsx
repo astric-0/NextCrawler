@@ -61,6 +61,12 @@ const SourceForm = _ => {
                 onChange={setter('targetDir')}
             />
 
+            <Form.Check 
+                className="mt-3" 
+                type="switch" 
+                label="Opt For Indexing" 
+                onClick={_ => setSourceState({ ...sourceState, 'upload': !sourceState.upload })}
+            />
         </Form>
     );
 }

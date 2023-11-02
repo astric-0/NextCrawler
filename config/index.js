@@ -10,7 +10,9 @@ const config = {
     maxHostLimit: 6,
     linkLimit: 20000,
     targetDir: getDateString(),
-    targetDomain: false
+    targetDomain: false,
+    upload: false,
+    uploadUrl: 'http://localhost:3001/client/index',
 }
 
 export default config;

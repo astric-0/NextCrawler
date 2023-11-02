@@ -61,6 +61,10 @@ export default function App({ Component, pageProps }) {
         return urlLog.total;
     }
 
+    const setUpload = flag => {
+        setSourceState({ ...sourceState, upload: flag });
+    }
+
     const callbacks = {
         setActiveHosts,
         setCurrentInfo,
@@ -69,6 +73,7 @@ export default function App({ Component, pageProps }) {
         setUrlLog,
         setCrawlerState,
         setUrlLogExplicit,
+        setUpload,
     }
 
     const value = {

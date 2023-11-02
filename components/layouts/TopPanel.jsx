@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBomb, faNoteSticky, faHome } from '@fortawesome/free-solid-svg-icons';
 import AppContext from '@/context/AppContext';
-import { StatusControl } from '@/components/';
+import { StatusControl, UploadControl } from '@/components/';
 
 const navItems = _ => {
     const { currentInfo, getTotalProccessedUrl, getErrorListLength } = useContext(AppContext);
@@ -54,6 +54,7 @@ const TopPanel = _ => {
                 {navList}
             </div>
             <div className='d-flex'>
+                <UploadControl />
                 <StatusControl />
             </div>
         </Nav>
