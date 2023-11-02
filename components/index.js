@@ -20,6 +20,8 @@ import BatchInfo from "./panels/BatchInfo";
 import ExpandBtn from "./ExpandBtn";
 import StatusControl from "./StatusControl";
 
+import * as Info from "./info";
+
 export {
     Layout, 
     TopPanel,
@@ -41,4 +43,6 @@ export {
     PanelTitle,
     BatchInfo,
     ExpandBtn,
+
+    Info,
 }

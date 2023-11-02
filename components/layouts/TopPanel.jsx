@@ -2,13 +2,20 @@ import React, { useContext } from 'react';
 import { Nav, Badge } from 'react-bootstrap';
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBomb, faNoteSticky, faHome } from '@fortawesome/free-solid-svg-icons';
+import { faBomb, faNoteSticky, faHome, faCircleInfo } from '@fortawesome/free-solid-svg-icons';
 import AppContext from '@/context/AppContext';
 import { StatusControl, UploadControl } from '@/components/';
 
 const navItems = _ => {
     const { currentInfo, getTotalProccessedUrl, getErrorListLength } = useContext(AppContext);
     return [
+        {
+            href: '/about',
+            face: 'About',
+            icon: faCircleInfo,
+            variant: 'dark',
+            data: '',
+        },
         {
             href: '/',
             face: 'Home',
