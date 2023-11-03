@@ -3,7 +3,7 @@ import requirements from "./requirements";
 
 const RequirementsList = _ => {
     const reqList = requirements?.map(({ title, detail, subList }, index) => {
-        
+      
         const subListComps = subList?.map(({itemTitle, itemDetail}, index) => {
             return (
                 <ListGroup.Item key={index} className="text-white bg-primary">
@@ -27,9 +27,11 @@ const RequirementsList = _ => {
     });
 
     return (
-        <Card className="mt-3 shadow requirements">
+        <Card className="mt-3 shadow">
             <Card.Header className="h5 text-primary">Requirements and Overview</Card.Header>
-            <ListGroup>{reqList}</ListGroup>
+            <Card.Body className="requirements">
+                <ListGroup>{reqList}</ListGroup>
+            </Card.Body>
         </Card>
     );
 }

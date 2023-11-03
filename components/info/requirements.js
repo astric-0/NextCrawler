@@ -30,7 +30,7 @@ const requirements = [
 
     {
         title: 'Software Requirements',
-        detail: 'Linux or Windows OS, Node package manager(npm, npx), A Modern Browser (Chrome or Mozilla)',
+        detail: 'Linux or Windows OS, Node package manager(npm, npx), A Modern Browser (Chrome or Mozilla) with CORS extension installed and active',
     },
 
 ];
