@@ -1,4 +1,5 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
+import { useRouter } from 'next/router';
 import { Nav, Badge } from 'react-bootstrap';
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -41,6 +42,12 @@ const navItems = _ => {
 };
 
 const TopPanel = _ => {
+    const router = useRouter();
+
+    useEffect(_ => {
+
+    }, [router]);
+
     const navList = navItems().map(({ href, face, icon, variant, data }, index) => (
         <Nav.Item key={index}>
             <Link className={`nav-link text-${variant}`} href={href}>
@@ -54,6 +61,8 @@ const TopPanel = _ => {
             </Link>
         </Nav.Item>
     ));
+    
+
 
     return (
         <Nav className='justify-content-between' variant='tabs' defaultActiveKey={'/'}>
