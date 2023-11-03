@@ -21,3 +21,9 @@ body {
     overflow-y: auto;
     overflow-x: hidden;
 }
+
+.requirements {
+    max-height: 35vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+}

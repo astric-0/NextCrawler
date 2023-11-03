@@ -11,14 +11,27 @@ const requirements = [
     
     {
         title: 'Hard-ware Requirements',
-        detail: 'Memory'
+        detail: '',
+        subList: [
+            {
+                itemTitle: 'Processor',
+                itemDetail: 'Intel i5 or any similar processor(in terms of performance and multi-threading)',
+            },
+            {
+                itemTitle: 'Memory (RAM)',
+                itemDetail: 'Recommended 8Gb or above',
+            },
+            {
+                itemTitle: 'Storage',
+                itemDetail: 'As per user, the quantity and type of content they want to target',
+            }
+        ]
     },
 
     {
-        title: 'Software Required',
-        detail: 'Linux or Windows OS, Node package manager(npm, npx)'
+        title: 'Software Requirements',
+        detail: 'Linux or Windows OS, Node package manager(npm, npx), A Modern Browser (Chrome or Mozilla)',
     },
-
 
 ];
 
