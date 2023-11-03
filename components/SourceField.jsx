@@ -1,15 +1,24 @@
 import React from 'react';
-import { Form, Col } from 'react-bootstrap';
+import { InputGroup, Form, Col } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const SourceField = ({ type, xs, label, onChange, value }) => (
+const SourceField = ({ type, xs, label, onChange, value, icon }) => (
     <Form.Group as={Col} xs={xs} className="mt-3">
         <Form.Label>{ label }*</Form.Label>
-        <Form.Control 
-            required 
-            type={type} 
-            value={value} 
-            onChange={onChange} 
-        />
+        <InputGroup>
+            { 
+                icon && 
+                <InputGroup.Text>
+                    <FontAwesomeIcon icon={icon}/>
+                </InputGroup.Text>
+            }
+            <Form.Control 
+                required 
+                type={type} 
+                value={value} 
+                onChange={onChange} 
+            />
+        </InputGroup>
     </Form.Group>
 );
 

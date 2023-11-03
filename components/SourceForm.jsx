@@ -3,6 +3,8 @@ import { Form } from "react-bootstrap";
 
 import AppContext from "@/context/AppContext";
 import { SourceField, SourceCMChoice } from "@/components";
+import { faHand, faLink, faRoadBarrier, faStarOfLife } from "@fortawesome/free-solid-svg-icons";
+import { faHourglass } from "@fortawesome/free-regular-svg-icons";
 
 const SourceForm = _ => {    
     const { sourceState, setSourceState } = useContext(AppContext);
@@ -17,6 +19,7 @@ const SourceForm = _ => {
                 label="Url"
                 xs="12"
                 value={sourceState.defaultUrl}
+                icon={faLink}
                 onChange={setter('defaultUrl')}
             />
             
@@ -27,6 +30,7 @@ const SourceForm = _ => {
                 label="Interval Gap"
                 xs="12"
                 value={sourceState.intervalGap}
+                icon={faHourglass}
                 onChange={setter('intervalGap')}
             />
 
@@ -35,6 +39,7 @@ const SourceForm = _ => {
                 label="Interval Request Limit"
                 xs="12"
                 value={sourceState.intervalRequestLimit}
+                icon={faRoadBarrier}
                 onChange={setter('intervalRequestLimit')}
             />
 
@@ -43,6 +48,7 @@ const SourceForm = _ => {
                 label="Max Host Limit"
                 xs="12"
                 value={sourceState.maxHostLimit}
+                icon={faRoadBarrier}
                 onChange={setter('maxHostLimit')}
             />
 
@@ -51,6 +57,7 @@ const SourceForm = _ => {
                 label="Link Limit"
                 xs="12"
                 value={sourceState.linkLimit}
+                icon={faHand}
                 onChange={setter('linkLimit')}
             />
 
@@ -58,13 +65,14 @@ const SourceForm = _ => {
                 label="Prefix"
                 xs="12"
                 value={sourceState.targetDir}
+                icon={faStarOfLife}
                 onChange={setter('targetDir')}
             />
 
             <Form.Check 
+                label="Opt For Indexing" 
                 className="mt-3" 
                 type="switch" 
-                label="Opt For Indexing" 
                 onClick={_ => setSourceState({ ...sourceState, 'upload': !sourceState.upload })}
             />
         </Form>
