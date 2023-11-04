@@ -7,8 +7,8 @@ import { PanelTitle } from '@/components';
 const keyNames = [
     { key: 'depth', name: 'Current Depth', variant: 'primary' },
     { key: 'remaining', name: 'Remaining URLs in Current Depth', variant: 'primary' },
-    { key: 'collected', name: 'URLs Collected for Next Depth', variant: 'success' },
-    { key: 'processed', name: 'Total Processed URLs', variant: 'dark' },
+    { key: 'collected', name: 'URLs Collected for Next Depth', variant: 'dark' },
+    { key: 'processed', name: 'Total Processed URLs', variant: 'success' },
 ];
 
 const CurrentInfoPanel = _ => {
