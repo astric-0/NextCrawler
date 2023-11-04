@@ -24,9 +24,6 @@ export default function App({ Component, pageProps }) {
     const [sourceState, setSourceState] = useState({ ...config });
     const [contentModulePack, setContentModulePack] = useState(getContentModulePacks()[0]);    
 
-    useEffect(_ => {        
-    }, [crawler.getState()]);
-
     const resetApp = _ => {
         crawler.reset();
         setCrawlerState(weaverStates.inactive);
