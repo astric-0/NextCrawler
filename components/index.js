@@ -1,4 +1,3 @@
-import TopPanel from "./layouts/TopPanel";
 import InputBox from "./layouts/InputBox";
 import Layout from "./layouts/Layout";
 
@@ -8,6 +7,7 @@ import SourceField from "./SourceField";
 import SourceCMChoice from "./SourceCMChoice";
 import UploadControl from "./UploadControl";
 
+import TopPanel from "./panels/TopPanel";
 import ActiveHostsPanel from "./panels/ActiveHostsPanel";
 import CurrentInfoPanel from "./panels/CurrentInfoPanel";
 import ErrorPanel from "./panels/ErrorPanel";
