@@ -9,7 +9,7 @@ const About = _ => {
                 <Col>
                     <Info.KeywordCard />
                 </Col>
-                <Col md={5}>
+                <Col lg={5}>
                     <Info.RequirementsList />
                 </Col>
             </Row>          

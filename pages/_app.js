@@ -1,12 +1,15 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { useState } from 'react';
+import "bootstrap/dist/css/bootstrap.min.css";
+import "react-toastify/dist/ReactToastify.css";
+import '@/styles/globals.css';
+
+import { useEffect, useState } from "react";
 
 import config from "@/config";
 import AppContext from "@/context/AppContext";
 import { Weaver, weaverStates } from "@/lib/services";
 import { Layout, TopPanel } from "@/components";
 import { getContentModulePacks } from '@/lib/content-modules';
-import '@/styles/globals.css';
+import { ToastContainer, toast } from "react-toastify";
 
 export default function App({ Component, pageProps }) {
     const crawler = new Weaver();
@@ -19,7 +22,10 @@ export default function App({ Component, pageProps }) {
     const [urlLog, setUrlLog] = useState({ total: 0 });
     const [urlLogLength, setUrlLogLength] = useState({length:0});
     const [sourceState, setSourceState] = useState({ ...config });
-    const [contentModulePack, setContentModulePack] = useState(getContentModulePacks()[0]);
+    const [contentModulePack, setContentModulePack] = useState(getContentModulePacks()[0]);    
+
+    useEffect(_ => {        
+    }, [crawler.getState()]);
 
     const resetApp = _ => {
         crawler.reset();
@@ -53,17 +59,11 @@ export default function App({ Component, pageProps }) {
         }
     }
 
-    const getErrorListLength = _ => {
-        return crawlerErrorList.length;
-    }
+    const getErrorListLength = _ => { return crawlerErrorList.length; }
 
-    const getTotalProccessedUrl = _ => {
-        return urlLog.total;
-    }
+    const getTotalProccessedUrl = _ => { return urlLog.total; }
 
-    const setUpload = flag => {
-        setSourceState({ ...sourceState, upload: flag });
-    }
+    const setUpload = flag => { setSourceState({ ...sourceState, upload: flag }); }
 
     const callbacks = {
         setActiveHosts,
@@ -74,7 +74,8 @@ export default function App({ Component, pageProps }) {
         setCrawlerState,
         setUrlLogExplicit,
         setUpload,
-    }
+        toast,
+    }    
 
     const value = {
         crawlerState,
@@ -94,12 +95,14 @@ export default function App({ Component, pageProps }) {
         getErrorListLength,
         getTotalProccessedUrl,
         resetApp,
+        toast,
     }
 
     return (
         <AppContext.Provider value={value}>
-            <Layout>
+            <Layout>                
                 <TopPanel />
+                <ToastContainer autoClose={false}  />
                 <Component {...pageProps} />
             </Layout>
         </AppContext.Provider>
