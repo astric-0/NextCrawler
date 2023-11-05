@@ -27,7 +27,7 @@ const RequirementsList = _ => {
     });
 
     return (
-        <Card className="mt-3 shadow">
+        <Card className="mt-4 shadow">
             <Card.Header className="h5 text-primary">Requirements and Overview</Card.Header>
             <Card.Body className="requirements">
                 <ListGroup>{reqList}</ListGroup>
