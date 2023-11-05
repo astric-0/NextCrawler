@@ -5,7 +5,7 @@ import { Button, ButtonGroup, Card, ListGroup } from "react-bootstrap";
 const KeywordCard = _ => {    
     const [currentKeyword, setCurrentKeyword] = useState(keywords[0]);
 
-    const keywordsBtnList = keywords.map((word, index) =>  (
+    const keywordsBtnList = keywords.map((word, index) => (
             <Button 
                 key={index}
                 variant="outline-dark"
