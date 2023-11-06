@@ -2,7 +2,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "react-toastify/dist/ReactToastify.css";
 import '@/styles/globals.css';
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import config from "@/config";
 import AppContext from "@/context/AppContext";
@@ -99,7 +99,7 @@ export default function App({ Component, pageProps }) {
         <AppContext.Provider value={value}>
             <Layout>                
                 <TopPanel />
-                <ToastContainer autoClose={false}  />
+                <ToastContainer autoClose={false} />
                 <Component {...pageProps} />
             </Layout>
         </AppContext.Provider>

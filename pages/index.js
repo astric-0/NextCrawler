@@ -22,10 +22,10 @@ const Home = _ => {
                         <Col md="12" lg="6">
                             <ActiveHostsPanel />
                         </Col>
-                        <Col  md="12" lg="6">
+                        <Col md="12" lg="6">
                             <BatchInfo />
                         </Col>
-                    </Row>                                                
+                    </Row>
                 </Col>
             }
         </Row>    

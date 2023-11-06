@@ -11,7 +11,6 @@ import TopPanel from "./panels/TopPanel";
 import ActiveHostsPanel from "./panels/ActiveHostsPanel";
 import CurrentInfoPanel from "./panels/CurrentInfoPanel";
 import ErrorPanel from "./panels/ErrorPanel";
-import UrlLogPanel from "./panels/UrlLogPanel";
 import PageNumberList from "./panels/PageNumberList";
 import UrlPanel from "./panels/UrlPanel";
 
@@ -33,8 +32,7 @@ export {
     
     ActiveHostsPanel,
     CurrentInfoPanel,
-    ErrorPanel,
-    UrlLogPanel,
+    ErrorPanel,    
     UrlPanel,
     
     PageNumberList,

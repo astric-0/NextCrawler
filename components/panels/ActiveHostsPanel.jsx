@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
 import { Container, ListGroup, Badge } from 'react-bootstrap';
 import { faSitemap } from '@fortawesome/free-solid-svg-icons';
 import AppContext from '@/context/AppContext';
