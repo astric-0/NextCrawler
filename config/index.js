@@ -13,6 +13,8 @@ const config = {
     targetDomain: false,
     upload: false,
     uploadUrl: 'http://localhost:3001/client/index',
+    imgListUrl: 'http://localhost:3001/client/imglist',
+    imgUrl: 'http://localhost:3001/image',
 }
 
 export default config;

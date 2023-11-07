@@ -1,8 +1,10 @@
+import Image from "next/image";
 import { Card } from "react-bootstrap";
 
-const ProjectCard = _ => {
+const ProjectCard = ({src}) => {
     return (
-        <Card bg="primary" text="light" className="shadow mt-3">
+        <Card text="primary" className="shadow mt-3">
+            <Image src={src} width={50} height={50} alt="Project" />
             <Card.Header className="h3">Project</Card.Header>
             <Card.Body align='justify'>
                 This is a client side implementation of a <span className='fw-bold'>Web Crawler</span> being used as a data collection tool,
