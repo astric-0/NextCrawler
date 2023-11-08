@@ -1,7 +1,7 @@
-import { useState, useEffect, useTransition } from "react";
+import { useState, useEffect } from "react";
 import { Container, Col, Row } from "react-bootstrap";
 import config from "@/config";
-import { Info } from "@/components";
+import { Info, Info2 } from "@/components";
 
 const About = _ => {
     const [imgUrls, setImgUrls] = useState({});
@@ -25,13 +25,13 @@ const About = _ => {
 
     return (
         <Container className="p-2">  
-            <Info.ProjectCard src={config.imgUrl + '/' + imgUrls.project} />
+            <Info2.ProjectCard src={config.imgUrl + '/' + imgUrls.project} />
+            <Info2.KeywordCard />
+            <Info.RequirementsList />
             <Row>
                 <Col>
-                    <Info.KeywordCard />
                 </Col>
                 <Col lg={5}>
-                    <Info.RequirementsList />
                 </Col>
             </Row>          
         </Container>

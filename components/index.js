@@ -19,6 +19,8 @@ import BatchInfo from "./panels/BatchInfo";
 import ExpandBtn from "./ExpandBtn";
 import StatusControl from "./StatusControl";
 
+import * as Info2 from "./info2";
+
 import * as Info from "./info";
 
 export {
@@ -43,4 +45,5 @@ export {
     ExpandBtn,
 
     Info,
+    Info2,
 }
