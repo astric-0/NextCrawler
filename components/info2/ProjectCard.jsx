@@ -5,8 +5,8 @@ import { Container, Card, Col } from 'react-bootstrap';
 const ProjectCard = ({ src }) => {
     return (
         <Container className='d-flex justify-content-around'>
-            <Col xs={3}>
-                <Image src={src} width={200} height={200} alt="Project" />
+            <Col xs={4}>
+                <Image src={src} width={350} height={350} alt="Project" />
             </Col>
             <Col>
                 <Card.Header className="h3 text-primary bg-transparent fw-bold">Project</Card.Header>

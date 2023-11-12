@@ -25,15 +25,9 @@ const About = _ => {
 
     return (
         <Container className="p-2">  
-            <Info2.ProjectCard src={config.imgUrl + '/' + imgUrls.project} />
+            <Info2.ProjectCard src={config.imgUrl + '/' + imgUrls.projectImg} />
             <Info2.KeywordCard />
-            <Info.RequirementsList />
-            <Row>
-                <Col>
-                </Col>
-                <Col lg={5}>
-                </Col>
-            </Row>          
+            <Info2.RequirementsList src={config.imgUrl + '/' + imgUrls.requirementImg} />
         </Container>
     );
 }

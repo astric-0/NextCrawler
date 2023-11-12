@@ -1,4 +1,5 @@
-import { ListGroup, Card } from "react-bootstrap";
+import Image from "next/image";
+import { ListGroup, Card, Row, Col, Container } from "react-bootstrap";
 import requirements from "./requirements";
 
 const RequirementsList = ({src}) => {
@@ -7,16 +8,16 @@ const RequirementsList = ({src}) => {
         const subListComps = subList?.map(({itemTitle, itemDetail}, index) => (        
             <ListGroup.Item key={index} className="text-white bg-primary">
                 <div className="ms-2 me-auto">
-                    <div className="fw-bold text-primary">{itemTitle}</div>
+                    <div className="fw-bold text">{itemTitle}</div>
                     {itemDetail}
                 </div>
             </ListGroup.Item>      
         ));
 
         return (
-            <ListGroup.Item key={index}>
-                <div className="ms-2 me-auto">
-                    <span className="fw-bold text-primary">{title}</span>
+            <ListGroup.Item key={index} className="border-0">                
+                <span className="fw-bold text-primary">{title}</span>
+                <div>
                     {detail}
                     <ListGroup>{subListComps}</ListGroup>
                 </div>
@@ -25,12 +26,17 @@ const RequirementsList = ({src}) => {
     });
 
     return (
-        <Card className="mt-4 shadow">
-            <Card.Header className="h5 text-primary">Requirements and Overview</Card.Header>
-            <Card.Body className="requirements">
-                <ListGroup>{reqList}</ListGroup>
-            </Card.Body>
-        </Card>
+        <Container className='mt-4 d-flex justify-content-around'>
+            <Col>            
+                <Card.Header className="h3 text-primary bg-transparent fw-bold">Requirements and Overview</Card.Header>                
+                <Card.Body className="requirements mt-2">
+                    <ListGroup numbered>{reqList}</ListGroup>
+                </Card.Body>            
+            </Col>
+            <Col xs={5}>
+                <Image src={src} width={500} height={500} alt="Project" />
+            </Col>
+        </Container>
     );
 }
 
