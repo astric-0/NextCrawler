@@ -20,7 +20,7 @@ const KeywordCard = _ => {
     const keywordPointsLists = currentKeyword.lists?.map(({ listTitle, keyPoints }, index) => {
 
         const pointsList = keyPoints?.map(({ itemTitle, itemDetail }, index) => (
-            <ListGroup.Item as='li' className='bg-black text-light' key={index}>                
+            <ListGroup.Item as='li' className="text-white bg-primary" key={index}>                
                 <span className="fw-bold me-2">{itemTitle}:</span> 
                 {itemDetail}                
             </ListGroup.Item>
