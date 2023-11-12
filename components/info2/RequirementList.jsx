@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ListGroup, Card, Row, Col, Container } from "react-bootstrap";
+import { ListGroup, Card, Col, Container } from "react-bootstrap";
 import requirements from "./requirements";
 
 const RequirementsList = ({src}) => {
