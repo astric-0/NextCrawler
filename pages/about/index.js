@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import { Container, Col, Row } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import config from "@/config";
-import { Info, Info2 } from "@/components";
+import { Info2 } from "@/components";
 
 const About = _ => {
     const [imgUrls, setImgUrls] = useState({});
