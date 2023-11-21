@@ -24,26 +24,23 @@ import * as Info2 from "./info2";
 import * as Info from "./info";
 
 export {
-    Layout, 
-    TopPanel,
-    Bozos,
-    SourceForm,
-    SourceField,
-    SourceCMChoice,
-    InputBox,
-    
-    ActiveHostsPanel,
-    CurrentInfoPanel,
-    ErrorPanel,    
-    UrlPanel,
-    
-    PageNumberList,
-    UploadControl,
-    StatusControl,
-    PanelTitle,
-    BatchInfo,
-    ExpandBtn,
-
-    Info,
-    Info2,
-}
+	Layout,
+	TopPanel,
+	Bozos,
+	SourceForm,
+	SourceField,
+	SourceCMChoice,
+	InputBox,
+	ActiveHostsPanel,
+	CurrentInfoPanel,
+	ErrorPanel,
+	UrlPanel,
+	PageNumberList,
+	UploadControl,
+	StatusControl,
+	PanelTitle,
+	BatchInfo,
+	ExpandBtn,
+	Info,
+	Info2,
+};

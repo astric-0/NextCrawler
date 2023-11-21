@@ -1,10 +1,8 @@
-import React from 'react';
-import { ErrorPanel } from '@/components';
+import React from "react";
+import { ErrorPanel } from "@/components";
 
 const Errors = () => {
-    return (
-        <ErrorPanel />  
-    );
-}
+	return <ErrorPanel />;
+};
 
 export default Errors;

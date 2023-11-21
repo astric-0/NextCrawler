@@ -4,10 +4,4 @@ import ProjectCard from "./ProjectCard";
 import RequirementsList from "./RequirementList";
 import requirements from "./requirements";
 
-export {
-    keywords,
-    KeywordCard,
-    ProjectCard,
-    RequirementsList,
-    requirements,
-}
+export { keywords, KeywordCard, ProjectCard, RequirementsList, requirements };
